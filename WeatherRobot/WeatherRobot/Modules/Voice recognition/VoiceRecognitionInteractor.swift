@@ -73,8 +73,10 @@ extension SpeechRecordingWorker
                 let transcriptedText = result.bestTranscription.formattedString
                 self.audioEngine.stop()
                 recognitionRequest.endAudio()
-                self.presenter?.updateLog(withText: "Spoken detected text: \(transcriptedText)", andIcon: #imageLiteral(resourceName: "Activated microphone"))
-                self.presenter?.confirmSpeechRecognition(withAlertText: "Want to know the weather of: \(transcriptedText)")
+                DispatchQueue.main.async {
+                    self.presenter?.updateLog(withText: "Spoken detected text: \(transcriptedText)", andIcon: #imageLiteral(resourceName: "Activated microphone"))
+                    self.presenter?.confirmSpeechRecognition(withAlertText: "Want to know the weather of: \(transcriptedText)")
+                }
             }
             
             if result?.isFinal ?? (error != nil) {

@@ -44,5 +44,13 @@ extension ManageUI
     }
     func confirmSpeechRecognition(withAlertText text: String)
     {
+        let alert = UIAlertController(title: nil, message: text, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "I confirm", style: .default, handler: {_ in
+            print("Speech confirmed")
+        }))
+        alert.addAction(UIAlertAction(title: "No, retry", style: .destructive, handler: {_ in
+            self.presenter?.recordSpeech()
+        }))
+        present(alert, animated: true, completion: nil)
     }
 }
