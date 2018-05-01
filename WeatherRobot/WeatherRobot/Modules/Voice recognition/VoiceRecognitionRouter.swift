@@ -29,6 +29,7 @@ class VoiceRecognitionRouter: VoiceRecognitionWireframeProtocol {
     }
     func moveToWeatherScene()
     {
-        
+        let weatherViewController = WeatherDetailsRouter.createWeatherDetailsModule(forCity: (viewController?.transcriptedText)!)
+        viewController?.navigationController?.pushViewController(weatherViewController, animated: true)
     }
 }

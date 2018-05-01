@@ -6,6 +6,7 @@ target 'WeatherRobot' do
   use_frameworks!
 
   # Pods for WeatherRobot
+pod 'AlamofireObjectMapper', '~> 5.0'
 
   target 'WeatherRobotTests' do
     inherit! :search_paths

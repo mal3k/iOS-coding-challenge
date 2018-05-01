@@ -76,6 +76,21 @@
             </objects>
             <point key="canvasLocation" x="991" y="133"/>
         </scene>
+        <!--Weather Details View Controller-->
+        <scene sceneID="W7s-E4-5qg">
+            <objects>
+                <viewController storyboardIdentifier="WeatherDetailsScene" id="VMK-cL-P2M" customClass="WeatherDetailsViewController" customModule="WeatherRobot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UHs-mj-lcn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="HL5-y4-ugB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="74A-ZZ-km0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1794" y="138"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="kHZ-CU-eyS">
             <objects>
