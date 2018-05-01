@@ -14,7 +14,8 @@ class VoiceRecognitionPresenter: VoiceRecognitionPresenterProtocol, VoiceRecogni
     weak private var view: VoiceRecognitionViewProtocol?
     var interactor: VoiceRecognitionInteractorInputProtocol?
     private let router: VoiceRecognitionWireframeProtocol
-
+    var transcriptedText: String?
+    
     init(interface: VoiceRecognitionViewProtocol, interactor: VoiceRecognitionInteractorInputProtocol?, router: VoiceRecognitionWireframeProtocol) {
         self.view = interface
         self.interactor = interactor
@@ -29,6 +30,10 @@ class VoiceRecognitionPresenter: VoiceRecognitionPresenterProtocol, VoiceRecogni
     {
         interactor?.startRecordingSpeech()
     }
+    func moveToWeatherScene()
+    {
+        router.moveToWeatherScene()
+    }
     func didGetSpeechAuthorizationStatus(withLog log: String, andIcon icon: UIImage, andRecordButtonEnabled status: Bool)
     {
         view?.updateLog(withText: log, andIcon: icon)
@@ -38,8 +43,8 @@ class VoiceRecognitionPresenter: VoiceRecognitionPresenterProtocol, VoiceRecogni
     {
         view?.updateLog(withText: text, andIcon: icon)
     }
-    func confirmSpeechRecognition(withAlertText text: String)
+    func confirmSpeechRecognition(withAlertText text: String, andranscriptedText transcript: String)
     {
-        view?.confirmSpeechRecognition(withAlertText: text)
+        view?.confirmSpeechRecognition(withAlertText: text, andranscriptedText: transcript)
     }
 }

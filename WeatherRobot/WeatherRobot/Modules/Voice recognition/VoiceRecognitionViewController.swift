@@ -14,6 +14,7 @@ class VoiceRecognitionViewController: UIViewController, VoiceRecognitionViewProt
 
     @IBOutlet weak var microPhoneImageView: UIImageView!
     @IBOutlet weak var voiceRecognitionLogTextView: UITextView!
+    var transcriptedText: String?
     
     @IBOutlet weak var recordButton: UIBarButtonItem!
     @IBAction func onRecordAction(_ sender: Any) {
@@ -42,11 +43,12 @@ extension ManageUI
     {
         recordButton.isEnabled = status
     }
-    func confirmSpeechRecognition(withAlertText text: String)
+    func confirmSpeechRecognition(withAlertText text: String, andranscriptedText transcript: String)
     {
+        self.transcriptedText = transcript
         let alert = UIAlertController(title: nil, message: text, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "I confirm", style: .default, handler: {_ in
-            print("Speech confirmed")
+            self.presenter?.moveToWeatherScene()
         }))
         alert.addAction(UIAlertAction(title: "No, retry", style: .destructive, handler: {_ in
             self.presenter?.recordSpeech()

@@ -11,7 +11,7 @@ import Speech
 import UIKit
 
 class VoiceRecognitionInteractor : VoiceRecognitionInteractorInputProtocol {
-
+    
     weak var presenter: VoiceRecognitionInteractorOutputProtocol?
     
     private let speechRecogniser = SFSpeechRecognizer(locale: Locale(identifier: "en-GB"))!
@@ -22,7 +22,7 @@ class VoiceRecognitionInteractor : VoiceRecognitionInteractorInputProtocol {
     
     private let audioEngine = AVAudioEngine()
     
-    private var speechText: String?
+    
 }
 typealias SpeechAuthorizationWorker = VoiceRecognitionInteractor
 extension SpeechAuthorizationWorker
@@ -75,7 +75,7 @@ extension SpeechRecordingWorker
                 recognitionRequest.endAudio()
                 DispatchQueue.main.async {
                     self.presenter?.updateLog(withText: "Spoken detected text: \(transcriptedText)", andIcon: #imageLiteral(resourceName: "Activated microphone"))
-                    self.presenter?.confirmSpeechRecognition(withAlertText: "Want to know the weather of: \(transcriptedText)")
+                    self.presenter?.confirmSpeechRecognition(withAlertText: "Want to know the weather of: \(transcriptedText)", andranscriptedText: transcriptedText)
                 }
             }
             
@@ -87,7 +87,6 @@ extension SpeechRecordingWorker
         inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
             self.recognitionRequest?.append(buffer)
         }
-        
         audioEngine.prepare()
         do
         {

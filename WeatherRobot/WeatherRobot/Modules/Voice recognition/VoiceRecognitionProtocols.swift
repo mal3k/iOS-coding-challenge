@@ -12,7 +12,7 @@ import UIKit
 // MARK: WireFrameProtocol
 
 protocol VoiceRecognitionWireframeProtocol: class {
-
+    func moveToWeatherScene()
 }
 
 // MARK: PresenterProtocol
@@ -22,6 +22,7 @@ protocol VoiceRecognitionPresenterProtocol: class {
     var interactor: VoiceRecognitionInteractorInputProtocol? { get set }
     func viewInit()
     func recordSpeech()
+    func moveToWeatherScene()
 }
 
 // MARK: InteractorProtocol
@@ -31,13 +32,12 @@ protocol VoiceRecognitionInteractorOutputProtocol: class {
     /** Interactor -> Presenter */
     func didGetSpeechAuthorizationStatus(withLog log: String, andIcon icon: UIImage, andRecordButtonEnabled status: Bool)
     func updateLog(withText text: String, andIcon icon: UIImage)
-    func confirmSpeechRecognition(withAlertText text: String)
+    func confirmSpeechRecognition(withAlertText text: String, andranscriptedText transcript: String)
 }
 
 protocol VoiceRecognitionInteractorInputProtocol: class {
 
     var presenter: VoiceRecognitionInteractorOutputProtocol? { get set }
-
     /** Presenter -> Interactor */
     func getSpeechAuthorizationStatus()
     func startRecordingSpeech()
@@ -52,5 +52,5 @@ protocol VoiceRecognitionViewProtocol: class {
     /** Presenter -> ViewController */
     func updateLog(withText text: String, andIcon icon: UIImage)
     func updateRecordButton(withStatus status: Bool)
-    func confirmSpeechRecognition(withAlertText text: String)
+    func confirmSpeechRecognition(withAlertText text: String, andranscriptedText transcript: String)
 }

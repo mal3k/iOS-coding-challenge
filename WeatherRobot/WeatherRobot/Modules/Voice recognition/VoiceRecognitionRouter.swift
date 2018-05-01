@@ -27,4 +27,8 @@ class VoiceRecognitionRouter: VoiceRecognitionWireframeProtocol {
 
         return view
     }
+    func moveToWeatherScene()
+    {
+        
+    }
 }
