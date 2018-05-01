@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 // MARK: WireFrameProtocol
 
@@ -19,6 +20,8 @@ protocol VoiceRecognitionWireframeProtocol: class {
 protocol VoiceRecognitionPresenterProtocol: class {
 
     var interactor: VoiceRecognitionInteractorInputProtocol? { get set }
+    func viewInit()
+    func recordSpeech()
 }
 
 // MARK: InteractorProtocol
@@ -26,6 +29,7 @@ protocol VoiceRecognitionPresenterProtocol: class {
 protocol VoiceRecognitionInteractorOutputProtocol: class {
 
     /** Interactor -> Presenter */
+    func didGetSpeechAuthorizationStatus(withLog log: String, andIcon icon: UIImage, andRecordButtonEnabled status: Bool)
 }
 
 protocol VoiceRecognitionInteractorInputProtocol: class {
@@ -33,6 +37,8 @@ protocol VoiceRecognitionInteractorInputProtocol: class {
     var presenter: VoiceRecognitionInteractorOutputProtocol? { get set }
 
     /** Presenter -> Interactor */
+    func getSpeechAuthorizationStatus()
+    func startRecordingSpeech()
 }
 
 // MARK: ViewProtocol
@@ -42,4 +48,6 @@ protocol VoiceRecognitionViewProtocol: class {
     var presenter: VoiceRecognitionPresenterProtocol? { get set }
 
     /** Presenter -> ViewController */
+    func updateLog(withText text: String, andIcon icon: UIImage)
+    func updateRecordButton(withStatus status: Bool)
 }

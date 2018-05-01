@@ -9,6 +9,7 @@
 import UIKit
 
 class VoiceRecognitionPresenter: VoiceRecognitionPresenterProtocol, VoiceRecognitionInteractorOutputProtocol {
+    
 
     weak private var view: VoiceRecognitionViewProtocol?
     var interactor: VoiceRecognitionInteractorInputProtocol?
@@ -19,5 +20,18 @@ class VoiceRecognitionPresenter: VoiceRecognitionPresenterProtocol, VoiceRecogni
         self.interactor = interactor
         self.router = router
     }
-
+    
+    func viewInit()
+    {
+        interactor?.getSpeechAuthorizationStatus()
+    }
+    func recordSpeech()
+    {
+        interactor?.startRecordingSpeech()
+    }
+    func didGetSpeechAuthorizationStatus(withLog log: String, andIcon icon: UIImage, andRecordButtonEnabled status: Bool)
+    {
+        view?.updateLog(withText: log, andIcon: icon)
+        view?.updateRecordButton(withStatus: status)
+    }
 }

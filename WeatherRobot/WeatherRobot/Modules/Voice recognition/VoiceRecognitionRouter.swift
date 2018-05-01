@@ -10,22 +10,21 @@ import UIKit
 
 class VoiceRecognitionRouter: VoiceRecognitionWireframeProtocol {
 
-    weak var viewController: UIViewController?
+    weak var viewController: VoiceRecognitionViewController?
 
-    static func createModule() -> UIViewController {
+    static func createModule() -> VoiceRecognitionViewController {
         // Change to get view from storyboard if not using progammatic UI
-        let view = VoiceRecognitionViewController(nibName: nil, bundle: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let view = storyboard.instantiateViewController(withIdentifier: "VoiceRecognitionScene") as! VoiceRecognitionViewController
         let interactor = VoiceRecognitionInteractor()
         let router = VoiceRecognitionRouter()
         let presenter = VoiceRecognitionPresenter(interface: view,
-                                                                interactor: interactor,
+                                                  interactor: interactor,
                                                                 router: router)
-
         view.presenter = presenter
         interactor.presenter = presenter
         router.viewController = view
 
         return view
     }
-
 }
