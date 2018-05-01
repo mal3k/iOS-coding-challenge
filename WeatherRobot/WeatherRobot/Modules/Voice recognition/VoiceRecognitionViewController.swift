@@ -42,4 +42,7 @@ extension ManageUI
     {
         recordButton.isEnabled = status
     }
+    func confirmSpeechRecognition(withAlertText text: String)
+    {
+    }
 }

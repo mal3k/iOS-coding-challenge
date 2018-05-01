@@ -34,4 +34,12 @@ class VoiceRecognitionPresenter: VoiceRecognitionPresenterProtocol, VoiceRecogni
         view?.updateLog(withText: log, andIcon: icon)
         view?.updateRecordButton(withStatus: status)
     }
+    func updateLog(withText text: String, andIcon icon: UIImage)
+    {
+        view?.updateLog(withText: text, andIcon: icon)
+    }
+    func confirmSpeechRecognition(withAlertText text: String)
+    {
+        view?.confirmSpeechRecognition(withAlertText: text)
+    }
 }

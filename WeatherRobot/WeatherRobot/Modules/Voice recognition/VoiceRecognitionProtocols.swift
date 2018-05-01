@@ -30,6 +30,8 @@ protocol VoiceRecognitionInteractorOutputProtocol: class {
 
     /** Interactor -> Presenter */
     func didGetSpeechAuthorizationStatus(withLog log: String, andIcon icon: UIImage, andRecordButtonEnabled status: Bool)
+    func updateLog(withText text: String, andIcon icon: UIImage)
+    func confirmSpeechRecognition(withAlertText text: String)
 }
 
 protocol VoiceRecognitionInteractorInputProtocol: class {
@@ -50,4 +52,5 @@ protocol VoiceRecognitionViewProtocol: class {
     /** Presenter -> ViewController */
     func updateLog(withText text: String, andIcon icon: UIImage)
     func updateRecordButton(withStatus status: Bool)
+    func confirmSpeechRecognition(withAlertText text: String)
 }

@@ -2,8 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>The WeatherRobot needs to access your microphone</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>The WeatherRobot needs to access your microphone to recognise your voice :)</string>
+	<string>The WeatherRobot needs to use Speech Recognition capability to analyse your voice</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
